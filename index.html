@@ -4,7 +4,6 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="styles/style.css" />
-
         <title>Kycklinggryta</title>
         <link
             rel="apple-touch-icon"
@@ -30,51 +29,215 @@
             <a class="logo-icon" href="#">
                 <img class="logo-header" src="images/logo.png" alt="Logo" />
             </a>
+            <!-- Hidden checkbox to toggle menu -->
+            <input type="checkbox" id="menu-toggle" />
+            <!-- Hamburger button -->
+            <label class="hamburger" for="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </label>
             <nav>
                 <ul class="nav-menu">
                     <li>
-                        <a href="#index.html"
-                            ><img
+                        <a href="#index.html">
+                            <img
                                 src="images/home.svg"
                                 alt="Hus"
                                 class="nav-img"
-                            />Hem</a
-                        >
+                            />
+                            Hem
+                        </a>
                     </li>
                     <li>
-                        <a href="#recept.html"
-                            ><img
+                        <a href="#recept.html">
+                            <img
                                 src="images/chefhat.svg"
                                 alt="Kockhatt"
                                 class="nav-img"
-                            />Recept</a
-                        >
+                            />
+                            Recept
+                        </a>
                     </li>
                     <li>
-                        <a href="#konto.html"
-                            ><img
+                        <a href="#konto.html">
+                            <img
                                 src="images/account.svg"
                                 alt="Profil"
                                 class="nav-img"
-                            />Profil</a
-                        >
+                            />
+                            Profil
+                        </a>
                     </li>
                 </ul>
             </nav>
         </header>
 
         <main>
-            <h1>Kycklinggryta</h1>
+            <section class="top-background-container">
+                <picture>
+                    <source
+                        srcset="images/kycklingpastasmall.webp"
+                        type="image/webp"
+                    />
+                    <source
+                        srcset="images/kycklingpastalarge.jpg"
+                        type="image/jpeg"
+                    />
+                    <img
+                        src="images/kycklingpastasmall.png"
+                        alt="Kycklingpasta"
+                        class="background-image"
+                    />
+                </picture>
+                <span class="background-overlay">
+                    <h1 class="recipe-title">Kycklingpasta</h1>
+                    <p class="time">60 min</p>
+                </span>
+            </section>
 
-            <picture> <source srcset="images/" </picture>
+            <div class="recipe-container">
+                <section class="ingredient-container">
+                    <h2>Ingredienser</h2>
+                    <!-- Portion selector -->
+                    <div id="portion-selector">
+                        <span id="portion-display">8 portioner</span>
+                        <label for="portions">Välj portioner:</label>
+                        <input
+                            type="number"
+                            id="portions"
+                            name="portions"
+                            value="8"
+                            max="200"
+                        />
 
-            <img src="images/kycklingpastalarge.jpg" alt="Kycklinggryta" />
+                    </div>
+                    <ul class="ingredient-list">
+                        <li>
+                            <span class="amount" data-base="1">1</span> kg
+                            kycklingfilé
+                        </li>
+                        <li>
+                            <span class="amount" data-base="2">2</span>
+                            vitlöksklyftor
+                        </li>
+                        <li>
+                            <span class="amount" data-base="1">1</span>
+                            hönsbuljongtärning
+                        </li>
+                        <li>
+                            <span class="amount" data-base="3">3</span> dl
+                            vatten
+                        </li>
+                        <li>
+                            <span class="amount" data-base="1">1</span> dl
+                            strimlade soltorkade tomater
+                        </li>
+                        <li>
+                            <span class="amount" data-base="3">3</span> dl
+                            grädde
+                        </li>
+                        <li>
+                            <span class="amount" data-base="2">2</span> msk
+                            majsredning
+                        </li>
+                        <li>
+                            <span class="amount" data-base="2.5">2 1/2</span>
+                            msk balsamvinäger
+                        </li>
+                        <li>
+                            <span class="amount" data-base="500">500</span> g
+                            färsk pasta
+                        </li>
+                        <li>
+                            <span class="amount" data-base="3">3</span> dl riven
+                            Parmigiano-Reggiano
+                        </li>
+                        <li>Olivolja</li>
+                        <li>
+                            <span class="amount" data-base="2">2</span> krm
+                            svartpeppar
+                        </li>
+                        <li>
+                            <span class="amount" data-base="2">2</span> krm salt
+                        </li>
+                    </ul>
+                </section>
 
-            <div class="background-container">
-                <h1>Your Title Here</h1>
+                <section class="instruction-container">
+                    <h2>Instruktioner</h2>
+                    <ol class="instruction-list">
+                        <li>
+                            Strimla kycklingen (1 kg) grovt, strimla också
+                            soltorkade tomaterna (1 dl). Stek kycklingen i en
+                            gryta med olivolja.
+                        </li>
+                        <li>
+                            I med pressad vitlök (2 klyftor), hönsbuljong (1
+                            tärning), vatten (3 dl), soltorkade tomater (1 dl).
+                            Blanda grädde (3 dl) och majsredning (2 msk) och
+                            häll i det. Ha i balsamvinäger (2 1/2 msk), peppar
+                            (2 krm), salt (1 krm).
+                        </li>
+                        <li>
+                            Koka pastan (500 g) i saltat vatten och ha i pastan
+                            i kycklinggrytan. Skulle såsen kännas för tjock, red
+                            med pastavatten, skulle den vara för vattnig, blanda
+                            en skvätt grädde och redning ha i det och låt koka
+                            upp.
+                        </li>
+                        <li>
+                            Smaka av och eventuellt krydda med mer salt och
+                            peppar
+                        </li>
+                        <li>Strö över riven parmesan (3 dl)</li>
+                        <li>Servera!</li>
+                    </ol>
+                </section>
+
+                <div class="extra-info-container">
+                    <section class="alternatives-container">
+                        <h2>Alternativ</h2>
+                        <ul class="allergy-list">
+                            <li>
+                                Kycklingbuljongen kan bytas till grönsaksbuljong
+                            </li>
+                            <li>
+                                Buljongtärningen kan bytas ut till 1,5 msk fond
+                            </li>
+                            <li>
+                                Majsredning kan bytas ut till någon annan typ av
+                                redning, ex. mjöl- eller potatismjölsredning.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="drink-container">
+                        <h2>Dricka till</h2>
+                        <ul class="drink-list">
+                            <li>Rödvin</li>
+                            <li>Vatten</li>
+                            <li>Cola</li>
+                            <li>Öl</li>
+                        </ul>
+                    </section>
+
+                    <section class="share-container">
+                        <h2>Dela receptet</h2>
+                        <a href="#">
+                            <img
+                                src="images/logo.png"
+                                alt="Facebook"
+                                class="share-icon"
+                            />
+                        </a>
+                    </section>
+                </div>
             </div>
         </main>
 
         <footer></footer>
+
+        <script src="scripts/script.js"></script>
     </body>
 </html>

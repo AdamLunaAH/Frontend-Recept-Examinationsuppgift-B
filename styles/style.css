@@ -7,29 +7,8 @@ body {
     font-family: Helvetica, Arial, sans-serif;
 }
 
-header > * {
-    margin: 0;
-    padding: 0;
-}
-
-
+/* Fixed header styling */
 header {
-    /* background-color: #333;
-    color: white; */
-    /* padding: 1rem; */
-    /* text-align: center; */
-    /* display: flex;
-    width: 100%;
-    justify-content: space-between;
-    height: 60px; */
-
-    /* display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 1rem; Add some padding to avoid elements touching edges */
-
-
     background-color: #333;
     color: white;
     display: flex;
@@ -37,146 +16,233 @@ header {
     align-items: center;
     width: 100%;
     padding: 0 1rem;
-    height: 80px; /* Updated header height */
-
+    height: 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
-ul {
-    list-style: none;
-    padding: 0px;
+/* Hide the checkbox */
+#menu-toggle {
+    display: none;
 }
 
+/* Hamburger button styling */
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+/* Navigation menu styling */
 .nav-menu {
-    /* list-style: none; */
-    /* padding: none; */
-
-    /* display: flex;
-    gap: 1rem; /* Adjust as needed */
-    /*margin: 0;
-    padding: 0; */
-    gap: 1rem; /* Adjust as needed */
-
     display: flex;
-    gap: 1rem; /* Adjust as needed */
+    gap: 1rem;
     margin: 0;
     padding: 0;
+    list-style: none;
 }
 
 .nav-menu li {
-    /* display: inline-flex;
-    /* margin-right: 1rem; */
-    /*height: 90%;
-    align-items: center;
-    font-size: 2rem;
-    justify-items: center; */
-
     display: flex;
     align-items: center;
     font-size: 2rem;
 }
 
 .nav-menu li a {
-    /* padding: 1rem 3rem 1rem 1rem; */
-
-    /* padding: 3px;
     display: flex;
     align-items: center;
-    gap: 1rem; /* Adds 1rem space between icon and text */
-    /*text-decoration: none; /* Remove default underline */
-    /*color: inherit; /* Ensure text color remains the same */
-    /*height: 2rem; Set the height for consistency */
-
-
-    display: flex;
-    align-items: center;
-    gap: 1rem; /* 1rem space between icon and text */
+    gap: 1rem;
     text-decoration: none;
     color: inherit;
-    padding: 0.5rem 1rem; /* Enlarges the clickable area */
-    border-radius: 4px; /* Optional: adds a slight rounding */
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
     transition: background-color 0.3s;
-
 }
-
-/* .nav-menu a:hover:not(.active) {
-    background-color: #111;
-} */
 
 .nav-menu li a:hover {
-    background-color: rgba(255, 255, 255, 0.2); /* Shaded hover effect */
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-nav {
-    display: flex;
-    /* margin-left: auto; */
-    /* justify-content: space-evenly; */
-    align-items: center;
-    width: auto;
-
-
-}
-
+/* Logo styling */
 .logo-header {
-    /* height: 50px; */
     width: 70px;
     height: auto;
-    /* padding: 5px 1rem 5px 1rem; */
-    /* object-fit: contain; */
 }
 
 .nav-img {
-    /* width: 2rem;
-    height: auto;
-    padding: auto;
-    padding: auto; */
     width: 2rem;
-    height: 2rem; /* Set height explicitly */
-    object-fit: contain; /* Ensure image scaling */
+    height: 2rem;
+    object-fit: contain;
 }
 
-.logo-icon {
-    display: flex;
-    align-items: center;
+/* Ensure main content doesn't hide behind the fixed header */
+main {
+    margin-top: 80px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    /* font-size: 2vw; */
+    /* padding: 1rem; */
+    color: #333;
 }
-
-header, .logo-icon, nav {
-    outline: 1px solid red;
-}
-
-
-
 
 /* Flex container to center content */
-        .background-container {
-            position: relative;
-            width: 100%;
-            min-height: 50vh; /* Ensures a reasonable height on small screens */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: rgb(0, 0, 0);
-            text-align: center;
-            padding: 20px; /* Adds spacing on smaller screens */
-        }
+.top-background-container {
+    position: relative;
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px;
+}
 
-        /* Background image with opacity */
-        .background-container::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('../images/kycklingpastasmall.png'); 
-            background-size: cover;
-            background-position: center;
-            opacity: 0.5; /* 50% opacity */
-            z-index: -1;
-        }
+/* Background image */
+.top-background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/kycklingpastasmall.png");
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
 
-        /* Responsive text */
-        h1.recepie-title {
-            font-size: clamp(1.5rem, 5vw, 3rem); /* Adjusts size based on viewport */
-            margin: 0;
-            padding: 10px;
-        }
+/* Responsive text */
+h1.recipe-title {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin: 0;
+    padding: 10px;
+    color: #333;
+    opacity: 1;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+    z-index: -1;
+}
+
+.background-overlay {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 1rem;
+    z-index: -1;
+}
+
+/* Responsive rules for screens smaller than 768px */
+@media (max-width: 768px) {
+    /* Show hamburger and hide regular nav */
+    .hamburger {
+        display: block;
+    }
+    nav {
+        display: none;
+        width: 100%;
+    }
+    /* When the checkbox is checked, display the nav menu */
+    #menu-toggle:checked ~ nav {
+        display: block;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background-color: #333;
+    }
+    .nav-menu {
+        flex-direction: column;
+        text-align: center;
+    }
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+
+    /* Hamburger to X transition */
+    #menu-toggle:checked + .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #menu-toggle:checked + .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu-toggle:checked + .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+.recipe-container {
+    display: grid;
+    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr )); */
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 1em;
+    padding: 1em;
+}
+
+/* On smaller screens: stack or auto-fill based on available space */
+@media (max-width: 900px) {
+    .recipe-container {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+}
+
+p.time {
+    /* display: flex; */
+    /* align-items: center; */
+    gap: 0.5rem;
+    font-size: 1.2em;
+    margin-bottom: 0.8rem;
+}
+
+div.extra-info-container section {
+    margin-bottom: 1em;
+}
+
+ol.instruction-list li {
+    margin-bottom: 1em;
+}
+
+/* section.instruction-container h2 {
+    margin-bottom: 1rem;
+}
+
+div.extra-info-container h2 {
+    margin-bottom: 1rem;
+} */
+
+h2 {
+    margin-bottom: 1rem;
+}
+
+/* Portion selector styling */
+#portion-selector {
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+#portion-selector label {
+    font-weight: bold;
+}
+#portion-selector input[type="number"] {
+    width: 60px;
+    padding: 4px;
+    font-size: 1em;
+}
