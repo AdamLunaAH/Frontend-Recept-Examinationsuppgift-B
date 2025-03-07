@@ -32,3 +32,85 @@ function updateIngredients() {
         span.textContent = rounded;
     });
 }
+
+
+
+
+
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    const starRating = document.querySelector(".star-rating");
+    const starsInner = document.querySelector(".stars-inner");
+    const reviewCounter = document.querySelector(".review-counter");
+
+    // Initial state: two 2-star reviews = 4 total stars from 2 reviews.
+    let totalStars = 4;
+    let reviewCount = 2;
+    const maxStars = 5;
+
+    // Function to update the displayed rating in the filled layer.
+    // It sets the width (in percentage) of .stars-inner.
+    function updateRatingDisplay(rating) {
+        const starPercentage = (rating / maxStars) * 100;
+        starsInner.style.width = starPercentage + "%";
+        // Also update the data attribute if needed (for debugging or CSS use)
+        starRating.setAttribute("data-rating", rating.toFixed(1));
+    }
+
+    // Calculate the initial average rating.
+    let averageRating = totalStars / reviewCount;
+    updateRatingDisplay(averageRating);
+
+    // On mousemove over the star rating, show the hovered rating.
+    starRating.addEventListener("mousemove", function (e) {
+        const rect = starRating.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const relativeX = Math.max(0, Math.min(offsetX, rect.width));
+        // console.log(relativeX);
+
+        if (relativeX < 26) {
+            hoveredRating = 1;
+        } else if (relativeX < 52) {
+            hoveredRating = 2;
+        } else if (relativeX < 78) {
+            hoveredRating = 3;
+        } else if (relativeX < 104) {
+            hoveredRating = 4;
+        } else {
+            hoveredRating = 5;
+        }
+        // const hoveredRating = (relativeX / rect.width) * maxStars;
+        // console.log(hoveredRating);
+        updateRatingDisplay(hoveredRating);
+    });
+
+    // On mouse leave, revert back to the current average rating.
+    starRating.addEventListener("mouseleave", function () {
+        updateRatingDisplay(averageRating);
+    });
+
+    // When a star is clicked, treat that as a new review.
+    starRating.addEventListener("click", function (e) {
+        const rect = starRating.getBoundingClientRect();
+        const offsetX = e.clientX - rect.left;
+        const relativeX = Math.max(0, Math.min(offsetX, rect.width));
+        // Round the new rating to the nearest whole star (can be changed to half stars if desired)
+        let selectedRating = Math.ceil((relativeX / rect.width) * maxStars);
+
+        // Update the total and count then compute the new average.
+        totalStars += selectedRating;
+        reviewCount++;
+        averageRating = totalStars / reviewCount;
+        updateRatingDisplay(averageRating);
+
+        // Update the review counter text.
+        reviewCounter.textContent =
+            reviewCount + (reviewCount === 1 ? " review" : " reviews");
+    });
+});
+
+
+
+

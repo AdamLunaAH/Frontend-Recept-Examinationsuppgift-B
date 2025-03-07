@@ -1,10 +1,17 @@
-* {
+/* I would like to implement a star rating. It sould show the current rating (the curent rating is preseneted by filled in stars, if partial scores, eg. 4.3, is a 4.3 stars a filled in, could be implemented it would be good), maybe with canvas or somthing else.  and the user can select to rate it by hovering a star (it should "shade" the hovered star) and then select the choosen star.
+A fully functioned rating function is not needed, but lets say the current function is 3 stars and the user can add ratings to it but its ofcourse just temporary added */
+
+*, *:before, *:after {
     margin: 0;
     box-sizing: border-box;
 }
 
 body {
     font-family: Helvetica, Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    background-color: #ffe4b5;
+    /* z-index: -100; */
 }
 
 /* Fixed header styling */
@@ -21,7 +28,8 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 1000;
+    /* z-index: 1000; */
+    z-index: 10;;
 }
 
 /* Hide the checkbox */
@@ -93,6 +101,10 @@ main {
     /* font-size: 2vw; */
     /* padding: 1rem; */
     color: #333;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    /* z-index: -10; */
 }
 
 /* Flex container to center content */
@@ -119,7 +131,7 @@ main {
     background-image: url("../images/kycklingpastasmall.png");
     background-size: cover;
     background-position: center;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 /* Responsive text */
@@ -131,6 +143,21 @@ h1.recipe-title {
     opacity: 1;
 }
 
+p.time {
+    /* display: flex; */
+    /* align-items: center; */
+    gap: 0.5rem;
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    margin-bottom: 0.8rem;
+}
+
+p.author-name {
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 2rem);
+    padding-bottom: 0.5rem;
+}
+
 .background-image {
     position: absolute;
     top: 0;
@@ -139,25 +166,27 @@ h1.recipe-title {
     height: 100%;
     object-fit: cover;
     opacity: 0.5;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
 .background-overlay {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 1rem;
-    z-index: -1;
+    z-index: 1;
 }
 
-/* Responsive rules for screens smaller than 768px */
-@media (max-width: 768px) {
+/* Responsive rules for screens smaller than 930px */
+@media (max-width: 930px) {
     /* Show hamburger and hide regular nav */
     .hamburger {
         display: block;
     }
+
     nav {
         display: none;
         width: 100%;
     }
+
     /* When the checkbox is checked, display the nav menu */
     #menu-toggle:checked ~ nav {
         display: block;
@@ -166,12 +195,39 @@ h1.recipe-title {
         left: 0;
         background-color: #333;
     }
+
     .nav-menu {
         flex-direction: column;
         text-align: center;
     }
+
     .nav-menu li {
         margin: 0.5rem 0;
+    }
+
+    .nav-menu li a {
+        display: block;
+        width: calc(100% - 4rem);
+        /* full width minus 2rem on each side */
+        margin: 0 auto;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    /* Center the search option */
+    .nav-menu li.search {
+        width: calc(100% - 4rem);
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .nav-menu li.search {
+        display: inline-flex;
+        /* keeps the input and button side by side */
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding-bottom: 1rem;
     }
 
     /* Hamburger to X transition */
@@ -203,14 +259,6 @@ h1.recipe-title {
     }
 }
 
-p.time {
-    /* display: flex; */
-    /* align-items: center; */
-    gap: 0.5rem;
-    font-size: 1.2em;
-    margin-bottom: 0.8rem;
-}
-
 div.extra-info-container section {
     margin-bottom: 1em;
 }
@@ -238,11 +286,191 @@ h2 {
     align-items: center;
     gap: 0.5em;
 }
+
 #portion-selector label {
     font-weight: bold;
 }
+
 #portion-selector input[type="number"] {
     width: 60px;
     padding: 4px;
     font-size: 1em;
+}
+
+/* Styling for the search option in the nav-menu */
+.nav-menu li.search form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.nav-menu li.search input[type="search"] {
+    border: none;
+    border-radius: 4px;
+    padding: 0.3rem 0.5rem;
+    font-size: 1rem;
+}
+
+.nav-menu li.search button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    /* padding: 0.3rem; */
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-menu li.search button:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Style for footer, text-align, font-family and margin */
+footer {
+    /* background-image: linear-gradient(to bottom, #fff, #ffe4b5); */
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* width: 50%; */
+    text-align: center;
+    /* font-family: "Courier New", Courie   r, monospace; */
+    margin-bottom: 8rem;
+    background-color: #ffe4b5;
+    position: relative;
+}
+
+/* Style for section-div, border, shadow and background color */
+footer section {
+    width: 100%;
+    /* border: 2px dotted rgba(0, 128, 0, 0.6); */
+    /* border-radius: 2rem; */
+    /* box-shadow: 0.2rem 0.2rem rgba(255, 192, 203, 0.4),
+        -0.2rem -0.2rem rgba(0, 0, 255, 0.3); */
+    /* background-color: white; */
+}
+
+/* list changes, remove details and change direction to row */
+footer section ul {
+    padding: 0;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+/* list direction changes to column on small screens*/
+@media screen and (max-width: 800px) {
+    footer section ul {
+        flex-direction: column;
+        line-height: 2rem;
+    }
+}
+
+/* H2 title  */
+footer h2 {
+    text-shadow: -2px 0 rgb(255, 255, 255), 0 2px rgb(255, 255, 255),
+        2px 0 rgb(255, 255, 255), 0 -2px rgb(255, 255, 255);
+    font-size: 2rem;
+}
+
+footer::before {
+    content: "";
+    display: block;
+    height: 4rem; /* Adjust thickness */
+    background: linear-gradient(to bottom, transparent, #ffe4b5);
+    width: 100%;
+    position: absolute;
+    top: -4rem;
+    left: 0;
+}
+/* footer {
+    position: relative;
+    background-color: #cccccc;
+} */
+
+.star-rating-container {
+    display: inline-block;
+    text-align: center;
+}
+
+.star-rating {
+    position: relative;
+    font-size: 2rem; /* adjust star size as needed */
+    color: #ccc; /* color for the base (unfilled) stars */
+    cursor: pointer;
+    user-select: none;
+    width: max-content;
+}
+
+/* The base layer (all gray stars) */
+.stars-outer {
+    display: block;
+}
+
+/* The filled layer (gold stars) is absolutely positioned on top and clipped */
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    color: rgb(7, 6, 2); /* color for filled stars */
+    pointer-events: none;
+}
+
+/* Optional: style for the review counter */
+.review-counter {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.star-rating {
+    margin: 1rem auto;
+    text-align: center;
+}
+
+/* The display for the average rating uses two layers */
+.rating-display {
+    position: relative;
+    display: inline-block;
+    font-size: 2rem;
+    color: #ccc;
+}
+
+.stars-base,
+.stars-filled {
+    white-space: nowrap;
+}
+
+.stars-filled {
+    color: gold;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none; /* so hover/click go to the input layer */
+}
+
+/* Styling for interactive rating input */
+.rating-input {
+    margin-top: 0.5rem;
+}
+
+.rating-input .star-input {
+    font-size: 2rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.rating-input .star-input.hovered,
+.rating-input .star-input.selected {
+    color: gold;
+}
+
+.review-count {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
 }
