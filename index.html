@@ -43,7 +43,7 @@
                     <li>
                         <a href="#index.html">
                             <img
-                                src="images/home.svg"
+                                src="images/icons/home.svg"
                                 alt="Hus"
                                 class="nav-img"
                             />
@@ -53,7 +53,7 @@
                     <li>
                         <a href="#recept.html">
                             <img
-                                src="images/chefhat.svg"
+                                src="images/icons/chefhat.svg"
                                 alt="Kockhatt"
                                 class="nav-img"
                             />
@@ -63,7 +63,7 @@
                     <li>
                         <a href="#konto.html">
                             <img
-                                src="images/account.svg"
+                                src="images/icons/account.svg"
                                 alt="Profil"
                                 class="nav-img"
                             />
@@ -81,7 +81,7 @@
                             />
                             <button type="submit">
                                 <img
-                                    src="images/search.svg"
+                                    src="images/icons/search.svg"
                                     alt="Search"
                                     class="nav-img"
                                 />
@@ -96,45 +96,88 @@
             <section class="top-background-container">
                 <picture>
                     <source
-                        srcset="images/kycklingpastasmall.webp"
+                        srcset="images/food/kycklingpastasmall.webp"
                         type="image/webp"
                     />
                     <source
-                        srcset="images/kycklingpastalarge.jpg"
-                        type="image/jpeg"
+                        srcset="images/food/kycklingpastasmall.png"
+                        type="image/png"
                     />
                     <img
-                        src="images/kycklingpastasmall.png"
+                        src="images/food/kycklingpastasmall.jpg"
                         alt="Kycklingpasta"
                         class="background-image"
                     />
                 </picture>
                 <div class="background-overlay">
                     <h1 class="recipe-title">Kycklingpasta</h1>
-                    <p class="author-name">Recept av: Joan Smith</p>
+                    <p class="author-name">av Rachel Smith</p>
+                    <p class="difficulty">Svårighetsgrad: Lätt</p>
                     <p class="time">Tid: 60 min</p>
 
                     <!-- Show rating and rating selection -->
                     <!-- Star rating display and review counter -->
                     <div class="star-rating-container">
                         <div class="star-rating" data-rating="4.0">
-                    <!-- The base layer shows five gray stars -->
-                    <div class="stars-outer">
+                            <!-- The base layer shows five gray stars -->
+                            <div class="stars-outer">
                                 <span>★</span><span>★</span><span>★</span
                                 ><span>★</span><span>★</span>
                             </div>
-                    <!-- The inner layer will be clipped (width set via JS) to show the filled stars -->
-                    <div class="stars-inner">
+                            <!-- The inner layer will be clipped (width set via JS) to show the filled stars -->
+                            <div class="stars-inner">
                                 <span>★</span><span>★</span><span>★</span
                                 ><span>★</span><span>★</span>
                             </div>
+                        </div>
+                        <div class="review-counter">2 Omdömen</div>
                     </div>
-                        <div class="review-counter">2 reviews</div>
-                    </div>
-
-
                 </div>
             </section>
+
+            <div class="recipe-images">
+                <div class="food-images-grid">
+                    <picture class="carousel-item">
+                        <source
+                            srcset="images/food/kycklingpasta2.webp"
+                            type="image/webp"
+                        />
+                        <img
+                            src="images/food/kycklingpasta2.jpg"
+                            alt="Kycklingpasta"
+                        />
+                    </picture>
+                    <picture class="carousel-item">
+                        <source
+                            srcset="images/food/kycklingpasta3.webp"
+                            type="image/webp"
+                        />
+                        <img
+                            src="images/food/kycklingpasta3.jpg"
+                            alt="Kycklingpasta"
+                        />
+                    </picture>
+                    <picture class="carousel-item">
+                        <source
+                            srcset="images/food/kycklingpasta4.webp"
+                            type="image/webp"
+                        />
+                        <img
+                            src="images/food/kycklingpasta4.jpg"
+                            alt="Kycklingpasta"
+                        />
+                    </picture>
+                </div>
+                <!-- Carousel controls that will be visible only on smaller screens -->
+                <div class="carousel-controls">
+                    <button class="prev-btn" aria-label="Previous Image">
+                        &#10094;
+                    </button>
+                    <button class="next-btn" aria-label="Next Image">
+                        &#10095;
+                    </button>
+                </div>
+            </div>
 
             <div class="recipe-container">
                 <section class="ingredient-container">
@@ -142,15 +185,18 @@
                     <!-- Portion selector -->
                     <div id="portion-selector">
                         <span id="portion-display">8 portioner</span>
-                        <label for="portions">Välj portioner:</label>
-                        <input
-                            type="number"
-                            id="portions"
-                            name="portions"
-                            value="8"
-                            max="200"
-                        />
+                        <div class="portion-selector-div">
+                            <label for="portions">Välj portioner:</label>
+                            <input
+                                type="number"
+                                id="portions"
+                                name="portions"
+                                value="8"
+                                max="200"
+                            />
+                        </div>
                     </div>
+
                     <ul class="ingredient-list">
                         <li>
                             <span class="amount" data-base="1">1</span> kg
@@ -289,20 +335,48 @@
                 </section>
 
                 <div class="extra-info-container">
-                    <section class="alternatives-container">
-                        <h2>Alternativ</h2>
-                        <ul class="allergy-list">
-                            <li>
-                                Kycklingbuljongen kan bytas till grönsaksbuljong
-                            </li>
-                            <li>
-                                Buljongtärningen kan bytas ut till 1,5 msk fond
-                            </li>
-                            <li>
-                                Majsredning kan bytas ut till någon annan typ av
-                                redning, ex. mjöl- eller potatismjölsredning.
-                            </li>
-                        </ul>
+                    <section class="share-container">
+                        <h2>Dela receptet</h2>
+                        <div class="share-buttons">
+                            <ul id="share-options" class="share-options">
+                                <li>
+                                    <a href="#" title="Dela på Instagram">
+                                        <img
+                                            src="images/icons/instagram.svg"
+                                            alt="Instagram"
+                                        />
+                                        Instagram
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="Dela på Facebook">
+                                        <img
+                                            src="images/icons/facebook.svg"
+                                            alt="Facebook"
+                                        />
+                                        Facebook
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="Dela på Pinterest">
+                                        <img
+                                            src="images/icons/pinterest.svg"
+                                            alt="Pinterest"
+                                        />
+                                        Pinterest
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="Dela via Email">
+                                        <img
+                                            src="images/icons/mail.svg"
+                                            alt="Email"
+                                        />
+                                        Email
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
                     </section>
 
                     <section class="drink-container">
@@ -315,15 +389,20 @@
                         </ul>
                     </section>
 
-                    <section class="share-container">
-                        <h2>Dela receptet</h2>
-                        <a href="#">
-                            <img
-                                src="images/logo.png"
-                                alt="Facebook"
-                                class="share-icon"
-                            />
-                        </a>
+                    <section class="alternatives-container">
+                        <h2>Alternativ</h2>
+                        <ul class="alternatives-list">
+                            <li>
+                                Kycklingbuljongen kan bytas till grönsaksbuljong
+                            </li>
+                            <li>
+                                Buljongtärningen kan bytas ut till 1,5 msk fond
+                            </li>
+                            <li>
+                                Majsredning kan bytas ut till någon annan typ av
+                                redning, ex. mjöl- eller potatismjölsredning.
+                            </li>
+                        </ul>
                     </section>
                 </div>
             </div>
@@ -332,13 +411,13 @@
         <footer>
             <!-- <h2>Contact information</h2> -->
             <section>
-                <p>Om bonappet.it</p>
+                <p>Om Bonappet.it</p>
                 <p>
                     Vi samlar recept från hela världen så att du enkelt hittar
                     dina favoriter – oavsett kost, tillfälle eller smak.
                 </p>
+                <p class="copyright">© <span id="year"></span> Bonappet.it</p>
             </section>
-
             <section>
                 <img class="logo-footer" src="images/logo.png" alt="Logo" />
             </section>

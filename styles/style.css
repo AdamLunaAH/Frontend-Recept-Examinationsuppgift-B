@@ -1,20 +1,21 @@
-/* I would like to implement a star rating. It sould show the current rating (the curent rating is preseneted by filled in stars, if partial scores, eg. 4.3, is a 4.3 stars a filled in, could be implemented it would be good), maybe with canvas or somthing else.  and the user can select to rate it by hovering a star (it should "shade" the hovered star) and then select the choosen star.
-A fully functioned rating function is not needed, but lets say the current function is 3 stars and the user can add ratings to it but its ofcourse just temporary added */
-
-*, *:before, *:after {
+/* Global reset and box sizing */
+*,
+*:before,
+*:after {
     margin: 0;
     box-sizing: border-box;
 }
 
+/* Base styles */
 body {
     font-family: Helvetica, Arial, sans-serif;
     display: flex;
     flex-direction: column;
     background-color: #ffe4b5;
-    /* z-index: -100; */
+    height: 100vh;
 }
 
-/* Fixed header styling */
+/* Header and navigation */
 header {
     background-color: #333;
     color: white;
@@ -28,16 +29,15 @@ header {
     top: 0;
     left: 0;
     right: 0;
-    /* z-index: 1000; */
-    z-index: 10;;
+    z-index: 10;
 }
 
-/* Hide the checkbox */
+/* Hide menu toggle */
 #menu-toggle {
     display: none;
 }
 
-/* Hamburger button styling */
+/* Hamburger menu icon */
 .hamburger {
     display: none;
     cursor: pointer;
@@ -52,7 +52,7 @@ header {
     transition: all 0.3s ease;
 }
 
-/* Navigation menu styling */
+/* Navigation menu list */
 .nav-menu {
     display: flex;
     gap: 1rem;
@@ -67,6 +67,7 @@ header {
     font-size: 2rem;
 }
 
+/* Navigation links */
 .nav-menu li a {
     display: flex;
     align-items: center;
@@ -82,222 +83,20 @@ header {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Logo styling */
+/*  Logo style */
 .logo-header {
     width: 70px;
     height: auto;
 }
 
+/* Nav-icon style */
 .nav-img {
     width: 2rem;
     height: 2rem;
     object-fit: contain;
 }
 
-/* Ensure main content doesn't hide behind the fixed header */
-main {
-    margin-top: 80px;
-    font-size: clamp(1rem, 2vw, 1.5rem);
-    /* font-size: 2vw; */
-    /* padding: 1rem; */
-    color: #333;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    /* z-index: -10; */
-}
-
-/* Flex container to center content */
-.top-background-container {
-    position: relative;
-    width: 100%;
-    min-height: 50vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 20px;
-}
-
-/* Background image */
-.top-background-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../images/kycklingpastasmall.png");
-    background-size: cover;
-    background-position: center;
-    /* z-index: -1; */
-}
-
-/* Responsive text */
-h1.recipe-title {
-    font-size: clamp(1.5rem, 5vw, 3rem);
-    margin: 0;
-    padding: 10px;
-    color: #333;
-    opacity: 1;
-}
-
-p.time {
-    /* display: flex; */
-    /* align-items: center; */
-    gap: 0.5rem;
-    font-size: clamp(1.2rem, 3vw, 2.5rem);
-    margin-bottom: 0.8rem;
-}
-
-p.author-name {
-    font-weight: 300;
-    font-style: italic;
-    font-size: clamp(1rem, 2vw, 2rem);
-    padding-bottom: 0.5rem;
-}
-
-.background-image {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0.5;
-    /* z-index: -1; */
-}
-
-.background-overlay {
-    background-color: rgba(255, 255, 255, 0.7);
-    border-radius: 1rem;
-    z-index: 1;
-}
-
-/* Responsive rules for screens smaller than 930px */
-@media (max-width: 930px) {
-    /* Show hamburger and hide regular nav */
-    .hamburger {
-        display: block;
-    }
-
-    nav {
-        display: none;
-        width: 100%;
-    }
-
-    /* When the checkbox is checked, display the nav menu */
-    #menu-toggle:checked ~ nav {
-        display: block;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        background-color: #333;
-    }
-
-    .nav-menu {
-        flex-direction: column;
-        text-align: center;
-    }
-
-    .nav-menu li {
-        margin: 0.5rem 0;
-    }
-
-    .nav-menu li a {
-        display: block;
-        width: calc(100% - 4rem);
-        /* full width minus 2rem on each side */
-        margin: 0 auto;
-        text-align: center;
-        padding: 1rem 0;
-    }
-
-    /* Center the search option */
-    .nav-menu li.search {
-        width: calc(100% - 4rem);
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .nav-menu li.search {
-        display: inline-flex;
-        /* keeps the input and button side by side */
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-        padding-bottom: 1rem;
-    }
-
-    /* Hamburger to X transition */
-    #menu-toggle:checked + .hamburger span:nth-child(1) {
-        transform: translateY(8px) rotate(45deg);
-    }
-
-    #menu-toggle:checked + .hamburger span:nth-child(2) {
-        opacity: 0;
-    }
-
-    #menu-toggle:checked + .hamburger span:nth-child(3) {
-        transform: translateY(-8px) rotate(-45deg);
-    }
-}
-
-.recipe-container {
-    display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(300px, 1fr )); */
-    grid-template-columns: 1fr 2fr 1fr;
-    gap: 1em;
-    padding: 1em;
-}
-
-/* On smaller screens: stack or auto-fill based on available space */
-@media (max-width: 900px) {
-    .recipe-container {
-        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    }
-}
-
-div.extra-info-container section {
-    margin-bottom: 1em;
-}
-
-ol.instruction-list li {
-    margin-bottom: 1em;
-}
-
-/* section.instruction-container h2 {
-    margin-bottom: 1rem;
-}
-
-div.extra-info-container h2 {
-    margin-bottom: 1rem;
-} */
-
-h2 {
-    margin-bottom: 1rem;
-}
-
-/* Portion selector styling */
-#portion-selector {
-    margin-bottom: 1em;
-    display: flex;
-    align-items: center;
-    gap: 0.5em;
-}
-
-#portion-selector label {
-    font-weight: bold;
-}
-
-#portion-selector input[type="number"] {
-    width: 60px;
-    padding: 4px;
-    font-size: 1em;
-}
-
-/* Styling for the search option in the nav-menu */
+/* Search form */
 .nav-menu li.search form {
     display: flex;
     align-items: center;
@@ -315,7 +114,6 @@ h2 {
     background: none;
     border: none;
     cursor: pointer;
-    /* padding: 0.3rem; */
     padding: 0.5rem 1rem;
     border-radius: 4px;
     transition: background-color 0.3s;
@@ -325,152 +123,493 @@ h2 {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Style for footer, text-align, font-family and margin */
-footer {
-    /* background-image: linear-gradient(to bottom, #fff, #ffe4b5); */
+/* Mobile/small screen styles */
+@media (max-width: 934px) {
+    /* Show hamburger button */
+    .hamburger {
+        display: block;
+    }
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    /* width: 50%; */
-    text-align: center;
-    /* font-family: "Courier New", Courie   r, monospace; */
-    margin-bottom: 8rem;
-    background-color: #ffe4b5;
-    position: relative;
-}
+    /* Hide nav-menu by default */
+    nav {
+        display: none;
+        width: 100%;
+    }
 
-/* Style for section-div, border, shadow and background color */
-footer section {
-    width: 100%;
-    /* border: 2px dotted rgba(0, 128, 0, 0.6); */
-    /* border-radius: 2rem; */
-    /* box-shadow: 0.2rem 0.2rem rgba(255, 192, 203, 0.4),
-        -0.2rem -0.2rem rgba(0, 0, 255, 0.3); */
-    /* background-color: white; */
-}
+    /* Show nav-menu when hamburger button is pressed */
+    #menu-toggle:checked ~ nav {
+        display: block;
+        position: absolute;
+        top: 80px;
+        left: 0;
+        background-color: #333;
+    }
 
-/* list changes, remove details and change direction to row */
-footer section ul {
-    padding: 0;
-    display: flex;
-    list-style: none;
-    flex-direction: row;
-    justify-content: space-evenly;
-}
-
-/* list direction changes to column on small screens*/
-@media screen and (max-width: 800px) {
-    footer section ul {
+    /* Nav-menu layout */
+    .nav-menu {
         flex-direction: column;
-        line-height: 2rem;
+        text-align: center;
+    }
+
+    .nav-menu li {
+        margin: 0.5rem 0;
+    }
+
+    .nav-menu li a {
+        display: block;
+        width: calc(100% - 4rem);
+        margin: 0 auto;
+        text-align: center;
+        padding: 1rem 0;
+    }
+
+    /* Search styles */
+    .nav-menu li.search {
+        width: calc(100% - 4rem);
+        margin: 0 auto;
+        text-align: center;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding-bottom: 1rem;
+    }
+
+    /* Hamburger button animations */
+    #menu-toggle:checked + .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #menu-toggle:checked + .hamburger span:nth-child(2) {
+        opacity: 0;
+    }
+
+    #menu-toggle:checked + .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
     }
 }
 
-/* H2 title  */
-footer h2 {
-    text-shadow: -2px 0 rgb(255, 255, 255), 0 2px rgb(255, 255, 255),
-        2px 0 rgb(255, 255, 255), 0 -2px rgb(255, 255, 255);
-    font-size: 2rem;
+/* Main styles */
+main {
+    margin-top: 80px;
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
 }
 
-footer::before {
-    content: "";
-    display: block;
-    height: 4rem; /* Adjust thickness */
-    background: linear-gradient(to bottom, transparent, #ffe4b5);
-    width: 100%;
-    position: absolute;
-    top: -4rem;
-    left: 0;
-}
-/* footer {
+.top-background-container {
     position: relative;
-    background-color: #cccccc;
-} */
+    width: 100%;
+    min-height: 50vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 20px;
+}
+
+.top-background-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("../images/kycklingpastasmall.png");
+    background-size: cover;
+    background-position: center;
+}
+
+h1.recipe-title {
+    font-size: clamp(1.5rem, 5vw, 3rem);
+    margin: 0;
+    padding: 10px;
+    color: #333;
+    opacity: 1;
+}
+
+p.time {
+    gap: 0.5rem;
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    margin-bottom: 0.8rem;
+}
+
+p.author-name {
+    font-weight: 300;
+    font-style: italic;
+    font-size: clamp(1rem, 2vw, 2rem);
+    padding-bottom: 0.5rem;
+}
+
+p.difficulty {
+    font-size: clamp(1rem, 2vw, 2rem);
+    padding-bottom: 0.5rem;
+}
+
+.background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+}
+
+.background-overlay {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-radius: 1rem;
+    z-index: 1;
+}
 
 .star-rating-container {
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
 }
 
 .star-rating {
     position: relative;
-    font-size: 2rem; /* adjust star size as needed */
-    color: #ccc; /* color for the base (unfilled) stars */
+    font-size: clamp(2rem, 2vw, 4rem);
+    color: #ccc;
     cursor: pointer;
     user-select: none;
     width: max-content;
 }
 
-/* The base layer (all gray stars) */
 .stars-outer {
     display: block;
 }
 
-/* The filled layer (gold stars) is absolutely positioned on top and clipped */
 .stars-inner {
     position: absolute;
     top: 0;
     left: 0;
     white-space: nowrap;
     overflow: hidden;
-    color: rgb(7, 6, 2); /* color for filled stars */
+    color: rgb(7, 6, 2);
     pointer-events: none;
 }
 
-/* Optional: style for the review counter */
 .review-counter {
     margin-top: 0.5rem;
     font-size: 1.2rem;
     color: #333;
 }
 
-.star-rating {
-    margin: 1rem auto;
+.recipe-images {
+    padding: 1em;
+}
+
+.food-images-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1em;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+}
+
+@media (max-width: 934px) {
+    .food-images-grid {
+        display: flex;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        gap: 0;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .food-images-grid::-webkit-scrollbar {
+        display: none;
+    }
+    .carousel-item {
+        flex: 0 0 100%;
+        scroll-snap-align: start;
+        max-height: 600px;
+        overflow: hidden;
+    }
+    .carousel-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .carousel-controls {
+        display: flex;
+        justify-content: center;
+        margin-top: 0.5em;
+    }
+    .carousel-controls button {
+        background: rgba(0, 0, 0, 0.5);
+        color: #fff;
+        border: 1px solid rgba(0, 0, 0, 0);
+        padding: 0.5em 1em;
+        font-size: 1.5em;
+        cursor: pointer;
+        border-radius: 50%;
+        margin: 0 0.5em;
+    }
+
+    .carousel-controls button:hover {
+        background: rgba(0, 0, 0, 0.7);
+        border: 1px solid rgba(0, 0, 0, 0.9);
+    }
+
+}
+
+@media (min-width: 935px) {
+    .carousel-controls {
+        display: none;
+    }
+}
+
+/* Large screens: 3-column layout */
+.recipe-container {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-gap: 1em;
+    padding: clamp(1rem, 2vw, 2rem);
+    grid-template-areas: "ingredients instructions extrainfo";
+
+    margin-bottom: 4rem;
+}
+
+.ingredient-container {
+    grid-area: ingredients;
+}
+
+.instruction-container {
+    grid-area: instructions;
+}
+
+.extra-info-container {
+    grid-area: extrainfo;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.drink-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.alternatives-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+
+@media (max-width: 900px) {
+    .recipe-container {
+        display: grid;
+        /* Two columns, two rows */
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto auto;
+        grid-gap: 1em;
+
+        /* Named grid areas so extra-info spans the entire second row */
+        grid-template-areas:
+            "ingredients instructions"
+            "extrainfo extrainfo";
+    }
+
+    .ingredient-container {
+        grid-area: ingredients;
+    }
+
+    .instruction-container {
+        grid-area: instructions;
+    }
+
+    .extra-info-container {
+        grid-area: extrainfo;
+        /* Lay out its sections horizontally on medium screens */
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+
+    .share-container {
+        max-width: 30%;
+    }
+
+    .alternatives-container {
+        max-width: 40%;
+    }
+
+    .drink-container {
+        max-width: 30%;
+    }
+}
+
+@media (max-width: 600px) {
+    .extra-info-container {
+        /* Lay out its sections vertically on medium screens */
+        flex-direction: column;
+    }
+
+    .recipe-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            "ingredients"
+            "instructions"
+            "extrainfo";
+    }
+    .share-container {
+        max-width: 100%;
+    }
+
+    .alternatives-container {
+        max-width: 100%;
+    }
+
+    .drink-container {
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+ol.instruction-list li {
+    margin-bottom: 1em;
+}
+
+h2 {
+    margin-bottom: 1rem;
     text-align: center;
 }
 
-/* The display for the average rating uses two layers */
-.rating-display {
-    position: relative;
-    display: inline-block;
-    font-size: 2rem;
-    color: #ccc;
+#portion-display {
+    font-size: 1.5em;
 }
 
-.stars-base,
-.stars-filled {
-    white-space: nowrap;
+.portion-selector-div {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
 }
 
-.stars-filled {
-    color: gold;
-    position: absolute;
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    pointer-events: none; /* so hover/click go to the input layer */
+#portion-selector {
+    margin-bottom: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
 }
 
-/* Styling for interactive rating input */
-.rating-input {
-    margin-top: 0.5rem;
+#portion-selector label {
+    font-weight: bold;
 }
 
-.rating-input .star-input {
-    font-size: 2rem;
-    color: #ccc;
+#portion-selector input[type="number"] {
+    width: 60px;
+    padding: 4px;
+    font-size: 1em;
+}
+
+div.extra-info-container section {
+    margin-bottom: 1em;
+}
+
+.share-buttons {
+    display: flex;
+    justify-self: center;
+}
+
+#share-btn {
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
     cursor: pointer;
-    transition: color 0.2s;
+    margin-bottom: 0.5rem;
 }
 
-.rating-input .star-input.hovered,
-.rating-input .star-input.selected {
-    color: gold;
+.share-options {
+    display: block;
+    list-style: none;
+    padding: 0.5rem;
+    margin: 0;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
-.review-count {
-    margin-top: 0.5rem;
-    font-size: 1.2rem;
+.share-options li {
+    margin: 0.5rem 0;
+}
+
+.share-options li a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.share-options li a img {
+    width: 20px;
+    height: 20px;
+    margin-right: 0.5rem;
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    margin-bottom: 8rem;
+    background-color: #ffe4b5;
+    position: relative;
+    font-size: clamp(1rem, 2vw, 1.3rem);
+    padding: clamp(1rem, 2vw, 2rem);
+}
+
+@media screen and (max-width: 600px) {
+    footer {
+        flex-direction: column;
+    }
+}
+
+footer section {
+    width: 100%;
+}
+
+footer section ul {
+    padding: 0;
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+footer::before {
+    content: "";
+    display: block;
+    height: 4rem;
+    background: linear-gradient(to bottom, transparent, #ffe4b5);
+    width: 100%;
+    position: absolute;
+    top: -4rem;
+    left: 0;
+}
+
+.copyright {
+    padding: 1rem;
 }

@@ -33,13 +33,6 @@ function updateIngredients() {
     });
 }
 
-
-
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
     const starRating = document.querySelector(".star-rating");
     const starsInner = document.querySelector(".stars-inner");
@@ -68,21 +61,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const rect = starRating.getBoundingClientRect();
         const offsetX = e.clientX - rect.left;
         const relativeX = Math.max(0, Math.min(offsetX, rect.width));
-        // console.log(relativeX);
+        console.log(relativeX);
 
-        if (relativeX < 26) {
+        let divWidthValue = document.querySelector(".star-rating").clientWidth;
+        console.log(divWidthValue);
+
+        if (relativeX < divWidthValue * 0.2) {
             hoveredRating = 1;
-        } else if (relativeX < 52) {
+        } else if (relativeX < divWidthValue * 0.4) {
             hoveredRating = 2;
-        } else if (relativeX < 78) {
+        } else if (relativeX < divWidthValue * 0.6) {
             hoveredRating = 3;
-        } else if (relativeX < 104) {
+        } else if (relativeX < divWidthValue * 0.8) {
             hoveredRating = 4;
         } else {
             hoveredRating = 5;
         }
         // const hoveredRating = (relativeX / rect.width) * maxStars;
-        // console.log(hoveredRating);
+        console.log(hoveredRating);
         updateRatingDisplay(hoveredRating);
     });
 
@@ -111,6 +107,59 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+// document.addEventListener("DOMContentLoaded", function () {
+//     // Only run the carousel if screen is small
+//     if (window.innerWidth < 768) {
+//         const items = document.querySelectorAll(
+//             ".recipe-images.carousel .carousel-item"
+//         );
+//         let currentIndex = 0;
+//         const intervalTime = 3000; // time in milliseconds
 
+//         function showNext() {
+//             items[currentIndex].classList.remove("active");
+//             // Loop back to the start when at the end
+//             currentIndex = (currentIndex + 1) % items.length;
+//             items[currentIndex].classList.add("active");
+//         }
 
+//         // Start the interval for auto switching
+//         setInterval(showNext, intervalTime);
+//     }
+// });
 
+// document.addEventListener('DOMContentLoaded', function() {
+//   // Only run auto-switch on small screens
+//   if (window.innerWidth <= 600) {
+//     const items = document.querySelectorAll('.carousel-item');
+//     let currentIndex = 0;
+//     // Set the first item as active
+//     items[currentIndex].classList.add('active');
+
+//     // Auto-switch every 3 seconds (3000ms)
+//     setInterval(() => {
+//       items[currentIndex].classList.remove('active');
+//       currentIndex = (currentIndex + 1) % items.length;
+//       items[currentIndex].classList.add('active');
+//     }, 3000);
+//   }
+// });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const grid = document.querySelector(".food-images-grid");
+    const nextBtn = document.querySelector(".next-btn");
+    const prevBtn = document.querySelector(".prev-btn");
+
+    // Use the width of the carousel container to calculate scroll distance
+    const scrollAmount = grid.offsetWidth;
+
+    nextBtn.addEventListener("click", function () {
+        grid.scrollBy({ left: scrollAmount, behavior: "smooth" });
+    });
+
+    prevBtn.addEventListener("click", function () {
+        grid.scrollBy({ left: -scrollAmount, behavior: "smooth" });
+    });
+});
+
+document.getElementById("year").innerHTML = new Date().getFullYear();
