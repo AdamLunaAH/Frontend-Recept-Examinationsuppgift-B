@@ -15,21 +15,32 @@ body {
     height: 100vh;
 }
 
+/* Limits inner content width to 2000px and center it */
+.container,
+.header-container {
+    max-width: 1920px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
 /* Header and navigation */
 header {
     background-color: #333;
-    color: white;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    padding: 0 1rem;
-    height: 80px;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     z-index: 10;
+    color: white;
+    padding: 0 1rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
 }
 
 /* Hide menu toggle */
@@ -202,7 +213,7 @@ main {
 .top-background-container {
     position: relative;
     width: 100%;
-    min-height: 50vh;
+    max-height: 50vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -230,6 +241,8 @@ p.author-name {
     font-style: italic;
     font-size: clamp(1rem, 2vw, 2rem);
     padding-bottom: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
 
 p.difficulty {
@@ -289,6 +302,7 @@ p.difficulty {
 
 .review-counter {
     margin-top: 0.5rem;
+    padding-bottom: 1rem;
     font-size: 1.2rem;
     color: #333;
 }
@@ -304,8 +318,16 @@ p.difficulty {
     gap: 1em;
 }
 
+.carousel-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .carousel-item img {
     width: 100%;
+    max-height: 400px;
+    /* width: auto; */
     height: auto;
     display: block;
     object-fit: cover;
@@ -615,3 +637,5 @@ footer::before {
 .copyright {
     padding: 1rem;
 }
+
+
