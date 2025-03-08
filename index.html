@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        <!-- Meta & Responsive Settings -->
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Link to CSS -->
         <link rel="stylesheet" href="styles/style.css" />
         <title>Kycklinggryta</title>
+        <!-- Favicon -->
         <link
             rel="apple-touch-icon"
             sizes="180x180"
@@ -26,18 +29,21 @@
     </head>
 
     <body>
+        <!-- Header and Navigation -->
         <header>
+            <!-- Logo -->
             <a class="logo-icon" href="#">
                 <img class="logo-header" src="images/logo.png" alt="Logo" />
             </a>
             <!-- Hidden checkbox to toggle menu -->
             <input type="checkbox" id="menu-toggle" />
-            <!-- Hamburger button -->
+            <!-- Hamburger button for mobile/small screens-->
             <label class="hamburger" for="menu-toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </label>
+            <!-- Navigation Menu -->
             <nav>
                 <ul class="nav-menu">
                     <li>
@@ -92,9 +98,12 @@
             </nav>
         </header>
 
+        <!-- Main -->
         <main>
+            <!-- Top background section with Recipe Title and Rating -->
             <section class="top-background-container">
                 <picture>
+                    <!-- Uses WebP if supported -->
                     <source
                         srcset="images/food/kycklingpastasmall.webp"
                         type="image/webp"
@@ -109,6 +118,7 @@
                         class="background-image"
                     />
                 </picture>
+                <!-- Overlay container for text content -->
                 <div class="background-overlay">
                     <h1 class="recipe-title">Kycklingpasta</h1>
                     <p class="author-name">av Rachel Smith</p>
@@ -119,12 +129,12 @@
                     <!-- Star rating display and review counter -->
                     <div class="star-rating-container">
                         <div class="star-rating" data-rating="4.0">
-                            <!-- The base layer shows five gray stars -->
+                            <!-- Base layer shows five gray stars -->
                             <div class="stars-outer">
                                 <span>★</span><span>★</span><span>★</span
                                 ><span>★</span><span>★</span>
                             </div>
-                            <!-- The inner layer will be clipped (width set via JS) to show the filled stars -->
+                            <!-- Clipped inner layer showing filled stars (width controlled via JS) -->
                             <div class="stars-inner">
                                 <span>★</span><span>★</span><span>★</span
                                 ><span>★</span><span>★</span>
@@ -135,6 +145,7 @@
                 </div>
             </section>
 
+            <!-- Recipe images carousel (carousel on small screens) -->
             <div class="recipe-images">
                 <div class="food-images-grid">
                     <picture class="carousel-item">
@@ -168,7 +179,7 @@
                         />
                     </picture>
                 </div>
-                <!-- Carousel controls that will be visible only on smaller screens -->
+                <!-- Carousel controls (only visible on smaller screens) -->
                 <div class="carousel-controls">
                     <button class="prev-btn" aria-label="Previous Image">
                         &#10094;
@@ -179,7 +190,9 @@
                 </div>
             </div>
 
+            <!-- Recipe container: Ingredients, Instructions and Extra Info -->
             <div class="recipe-container">
+                <!-- Ingredients section -->
                 <section class="ingredient-container">
                     <h2>Ingredienser</h2>
                     <!-- Portion selector -->
@@ -199,8 +212,8 @@
 
                     <ul class="ingredient-list">
                         <li>
-                            <span class="amount" data-base="1">1</span> kg
-                            kycklingfilé
+                            <span class="amount" data-base="1">1</span>
+                            kg kycklingfilé
                         </li>
                         <li>
                             <span class="amount" data-base="2">2</span>
@@ -211,44 +224,46 @@
                             hönsbuljongtärning
                         </li>
                         <li>
-                            <span class="amount" data-base="3">3</span> dl
-                            vatten
+                            <span class="amount" data-base="3">3</span>
+                            dl vatten
                         </li>
                         <li>
-                            <span class="amount" data-base="1">1</span> dl
-                            strimlade soltorkade tomater
+                            <span class="amount" data-base="1">1</span>
+                            dl strimlade soltorkade tomater
                         </li>
                         <li>
-                            <span class="amount" data-base="3">3</span> dl
-                            grädde
+                            <span class="amount" data-base="3">3</span>
+                            dl grädde
                         </li>
                         <li>
-                            <span class="amount" data-base="2">2</span> msk
-                            majsredning
+                            <span class="amount" data-base="2">2</span>
+                            msk majsredning
                         </li>
                         <li>
                             <span class="amount" data-base="2.5">2.5</span>
                             msk balsamvinäger
                         </li>
                         <li>
-                            <span class="amount" data-base="500">500</span> g
-                            färsk pasta
+                            <span class="amount" data-base="500">500</span>
+                            g färsk pasta
                         </li>
                         <li>
-                            <span class="amount" data-base="3">3</span> dl riven
-                            Parmigiano-Reggiano
+                            <span class="amount" data-base="3">3</span>
+                            dl riven Parmigiano-Reggiano
                         </li>
                         <li>Olivolja</li>
                         <li>
-                            <span class="amount" data-base="2">2</span> krm
-                            svartpeppar
+                            <span class="amount" data-base="2">2</span>
+                            krm svartpeppar
                         </li>
                         <li>
-                            <span class="amount" data-base="2">2</span> krm salt
+                            <span class="amount" data-base="1">1</span>
+                            krm salt
                         </li>
                     </ul>
                 </section>
 
+                <!-- Instructions section -->
                 <section class="instruction-container">
                     <h2>Instruktioner</h2>
                     <ol class="instruction-list">
@@ -266,7 +281,7 @@
                             dl). Stek kycklingen i en gryta med olivolja.
                         </li>
                         <li>
-                            I med pressad vitlök (<span
+                            Tillsätt pressad vitlök (<span
                                 class="amount"
                                 data-base="2"
                                 >2</span
@@ -294,7 +309,7 @@
                                 data-base="2"
                                 >2</span
                             >
-                            msk) och häll i det. Ha i balsamvinäger (<span
+                            msk), häll i det, och ha i balsamvinäger (<span
                                 class="amount"
                                 data-base="2.5"
                                 >2.5</span
@@ -304,8 +319,8 @@
                                 data-base="2"
                                 >2</span
                             >
-                            krm), salt (<span class="amount" data-base="2"
-                                >2</span
+                            krm), salt (<span class="amount" data-base="1"
+                                >1</span
                             >
                             krm).
                         </li>
@@ -313,13 +328,13 @@
                             Koka pastan (<span class="amount" data-base="500"
                                 >500</span
                             >
-                            g) i saltat vatten och ha i pastan i kycklinggrytan.
-                            Skulle såsen kännas för tjock, red med pastavatten,
-                            skulle den vara för vattnig, blanda en skvätt grädde
-                            och redning ha i det och låt koka upp.
+                            g) i saltat vatten och ha i pastan i grytan. Skulle
+                            såsen kännas för tjock, red med pastavatten, skulle
+                            den vara för vattnig, blanda en skvätt grädde och
+                            redning ha i det och låt koka upp.
                         </li>
                         <li>
-                            Smaka av och eventuellt krydda med mer salt och
+                            Smaka av och krydda eventuellt med mer salt och
                             peppar
                         </li>
                         <li>
@@ -328,13 +343,15 @@
                                 data-base="3"
                                 >3</span
                             >
-                            dl)
+                            dl).
                         </li>
                         <li>Servera!</li>
                     </ol>
                 </section>
 
+                <!-- Extra information section: Share, Drink Suggestions and Alternatives -->
                 <div class="extra-info-container">
+                    <!-- Share section -->
                     <section class="share-container">
                         <h2>Dela receptet</h2>
                         <div class="share-buttons">
@@ -379,6 +396,7 @@
                         </div>
                     </section>
 
+                    <!-- Drink suggestions section -->
                     <section class="drink-container">
                         <h2>Dricka till</h2>
                         <ul class="drink-list">
@@ -389,6 +407,7 @@
                         </ul>
                     </section>
 
+                    <!-- Alternatives section -->
                     <section class="alternatives-container">
                         <h2>Alternativ</h2>
                         <ul class="alternatives-list">
@@ -408,8 +427,8 @@
             </div>
         </main>
 
+        <!-- Footer -->
         <footer>
-            <!-- <h2>Contact information</h2> -->
             <section>
                 <p>Om Bonappet.it</p>
                 <p>
@@ -423,7 +442,6 @@
             </section>
 
             <section>
-                <!-- list using row on larger screens -->
                 <ul>
                     <li>
                         Email:
@@ -436,6 +454,7 @@
             </section>
         </footer>
 
+        <!-- JavaScript -->
         <script src="scripts/script.js"></script>
     </body>
 </html>

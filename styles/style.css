@@ -211,18 +211,7 @@ main {
     padding: 20px;
 }
 
-.top-background-container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url("../images/kycklingpastasmall.png");
-    background-size: cover;
-    background-position: center;
-}
-
+/* Title style */
 h1.recipe-title {
     font-size: clamp(1.5rem, 5vw, 3rem);
     margin: 0;
@@ -232,7 +221,6 @@ h1.recipe-title {
 }
 
 p.time {
-    gap: 0.5rem;
     font-size: clamp(1.2rem, 3vw, 2.5rem);
     margin-bottom: 0.8rem;
 }
@@ -249,6 +237,7 @@ p.difficulty {
     padding-bottom: 0.5rem;
 }
 
+/* Background image styles */
 .background-image {
     position: absolute;
     top: 0;
@@ -259,12 +248,14 @@ p.difficulty {
     opacity: 0.5;
 }
 
+/* Overlay */
 .background-overlay {
     background-color: rgba(255, 255, 255, 0.7);
     border-radius: 1rem;
     z-index: 1;
 }
 
+/* Star rating styles */
 .star-rating-container {
     display: flex;
     flex-direction: column;
@@ -302,6 +293,7 @@ p.difficulty {
     color: #333;
 }
 
+/* Recipe image styles and carousel*/
 .recipe-images {
     padding: 1em;
 }
@@ -320,6 +312,7 @@ p.difficulty {
 }
 
 @media (max-width: 934px) {
+    /* Change grid to horizontal scroll/switch for mobile/small screens */
     .food-images-grid {
         display: flex;
         overflow-x: auto;
@@ -343,6 +336,7 @@ p.difficulty {
         object-fit: cover;
     }
 
+    /* Carousel controls */
     .carousel-controls {
         display: flex;
         justify-content: center;
@@ -351,7 +345,7 @@ p.difficulty {
     .carousel-controls button {
         background: rgba(0, 0, 0, 0.5);
         color: #fff;
-        border: 1px solid rgba(0, 0, 0, 0);
+        border: 1px solid transparent;
         padding: 0.5em 1em;
         font-size: 1.5em;
         cursor: pointer;
@@ -363,13 +357,21 @@ p.difficulty {
         background: rgba(0, 0, 0, 0.7);
         border: 1px solid rgba(0, 0, 0, 0.9);
     }
-
 }
 
 @media (min-width: 935px) {
+    /* Hide carousel controls on larger screens */
     .carousel-controls {
         display: none;
     }
+}
+
+/* Recipe layout and styles: Ingredients, Instructions, and Extra Info*/
+
+/* Recipe h2 style */
+h2 {
+    margin-bottom: 1rem;
+    text-align: center;
 }
 
 /* Large screens: 3-column layout */
@@ -379,7 +381,6 @@ p.difficulty {
     grid-gap: 1em;
     padding: clamp(1rem, 2vw, 2rem);
     grid-template-areas: "ingredients instructions extrainfo";
-
     margin-bottom: 4rem;
 }
 
@@ -398,19 +399,15 @@ p.difficulty {
     gap: 1em;
 }
 
-.drink-list {
+/* Lists in extra info */
+.drink-list,
+.alternatives-list {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.alternatives-list {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-
-
+/* Layout for medium screen sizes */
 @media (max-width: 900px) {
     .recipe-container {
         display: grid;
@@ -418,7 +415,6 @@ p.difficulty {
         grid-template-columns: 1fr 1fr;
         grid-template-rows: auto auto;
         grid-gap: 1em;
-
         /* Named grid areas so extra-info spans the entire second row */
         grid-template-areas:
             "ingredients instructions"
@@ -435,7 +431,7 @@ p.difficulty {
 
     .extra-info-container {
         grid-area: extrainfo;
-        /* Lay out its sections horizontally on medium screens */
+        /* Layout sections horizontally on medium screens */
         display: flex;
         flex-direction: row;
         justify-content: space-evenly;
@@ -454,9 +450,10 @@ p.difficulty {
     }
 }
 
+/* Layout for small screen sizes */
 @media (max-width: 600px) {
     .extra-info-container {
-        /* Lay out its sections vertically on medium screens */
+        /* Layout sections vertically on small screens */
         flex-direction: column;
     }
 
@@ -468,16 +465,13 @@ p.difficulty {
             "instructions"
             "extrainfo";
     }
-    .share-container {
-        max-width: 100%;
-    }
-
-    .alternatives-container {
+    .share-container,
+    .alternatives-container,
+    .drink-container {
         max-width: 100%;
     }
 
     .drink-container {
-        max-width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -485,14 +479,7 @@ p.difficulty {
     }
 }
 
-ol.instruction-list li {
-    margin-bottom: 1em;
-}
-
-h2 {
-    margin-bottom: 1rem;
-    text-align: center;
-}
+/* Recipe portion selector styles */
 
 #portion-display {
     font-size: 1.5em;
@@ -523,10 +510,17 @@ h2 {
     font-size: 1em;
 }
 
+/* Instruction list style */
+ol.instruction-list li {
+    margin-bottom: 1em;
+}
+
+/*  Margin for extra info sections */
 div.extra-info-container section {
     margin-bottom: 1em;
 }
 
+/* Share styles */
 .share-buttons {
     display: flex;
     justify-self: center;
@@ -554,6 +548,12 @@ div.extra-info-container section {
 
 .share-options li {
     margin: 0.5rem 0;
+    padding: 0.5rem;
+    border-radius: 5px;
+}
+
+.share-options li:hover {
+    background-color: #e4e4e4;
 }
 
 .share-options li a {
@@ -569,6 +569,7 @@ div.extra-info-container section {
     margin-right: 0.5rem;
 }
 
+/*  Footer styles */
 footer {
     display: flex;
     flex-direction: row;
@@ -599,6 +600,7 @@ footer section ul {
     gap: 1rem;
 }
 
+/* Main to footer gradient */
 footer::before {
     content: "";
     display: block;
